@@ -6,7 +6,7 @@ readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [
-    { name = "Siddhant Sharma", email = "sharmasiddhant@protonmail.com" }
+    { name = "Siddhant Sharma", email = "sharmasiddhant@protonmail.com" },
 ]
 requires-python = ">=3.13"
 dependencies = [
@@ -18,13 +18,34 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = [
-    "ipython>=9.15.0",
-    "mypy>=2.3.0",
-    "pytest>=9.1.1",
-    "ruff>=0.16.0",
-]
+dev = ["ipython>=9.15.0", "mypy>=2.3.0", "pytest>=9.1.1", "ruff>=0.16.0"]
 
 [build-system]
 requires = ["uv_build>=0.9.0,<0.10.0"]
 build-backend = "uv_build"
+
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.ruff.format]
+
+docstring-code-format = true      # Format Python code in docstrings
+quote-style = "double"            # Use double quotes
+indent-style = "space"            # Use spaces instead of tabs
+line-ending = "auto"              # Preserve or detect line endings
+skip-magic-trailing-comma = false # Use Black-style trailing commas
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors (syntax/style issues)
+    "W",   # pycodestyle warnings (style warnings)
+    "F",   # Pyflakes (unused imports, undefined names, etc.)
+    "I",   # isort (sort and group imports)
+    "UP",  # pyupgrade (rewrite code to modern Python syntax)
+    "B",   # flake8-bugbear (likely bugs and common pitfalls)
+    "C4",  # flake8-comprehensions (more idiomatic comprehensions)
+    "SIM", # flake8-simplify (simplify unnecessarily complex code)
+    "RUF", # Ruff-specific rules and best practices
+]
