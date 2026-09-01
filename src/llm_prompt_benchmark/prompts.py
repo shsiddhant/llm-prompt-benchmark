@@ -6,7 +6,10 @@ Classify the sentiment of the following movie review as positive or negative.
 Review:
 {review}
 
-Respond with exactly one word: positive or negative
+Respond with exactly one word:
+positive
+or
+negative
 """
 
 FEW_SHOT_TEMPLATE = """
@@ -26,7 +29,10 @@ Review:
 {review}
 Sentiment:
 
-Respond with exactly one word: positive or negative
+Respond with exactly one word:
+positive
+or
+negative
 """
 
 INSTRUCTION_TEMPLATE = """
@@ -44,7 +50,10 @@ Classification rules:
 Review:
 {review}
 
-Respond with exactly one word: positive or negative
+Respond with exactly one word:
+positive
+or
+negative
 """
 
 
