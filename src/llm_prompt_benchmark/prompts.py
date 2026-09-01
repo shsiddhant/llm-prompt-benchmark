@@ -6,14 +6,13 @@ Classify the sentiment of the following movie review as positive or negative.
 Review:
 {review}
 
-Respond with exactly one word:
-positive
-or
-negative
+Respond with exactly one word: positive or negative
 """
 
 FEW_SHOT_TEMPLATE = """
 Classify the sentiment of the movie review.
+
+Examples:
 
 Review:
 A wonderful film with brilliant performances and a touching story.
@@ -26,17 +25,26 @@ Sentiment: negative
 Review:
 {review}
 Sentiment:
+
+Respond with exactly one word: positive or negative
 """
 
 INSTRUCTION_TEMPLATE = """
 You are an expert sentiment analysis classifier.
 
-Read the movie review carefully.
-Determine whether the overall sentiment is positive or negative.
-Return exactly one word: positive or negative.
+Determine whether the movie review expresses an overall positive or negative
+sentiment.
+
+Classification rules:
+- positive: the reviewer expresses an overall favorable opinion.
+- negative: the reviewer expresses an overall unfavorable opinion.
+- Base the classification on the review as a whole, not isolated words.
+- Do not provide an explanation.
 
 Review:
 {review}
+
+Respond with exactly one word: positive or negative
 """
 
 
