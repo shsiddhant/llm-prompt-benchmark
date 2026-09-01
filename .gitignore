@@ -10,5 +10,10 @@ wheels/
 .venv
 
 # VS Code
-
 .vscode/
+
+# Enviroment
+.env
+
+# Git exports
+*.diff
