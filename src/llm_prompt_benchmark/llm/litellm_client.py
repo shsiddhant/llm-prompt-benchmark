@@ -5,7 +5,7 @@ from litellm import ModelResponse, Usage, completion
 from .base import LLM, GeneratedResponse
 
 
-class LLMClient(LLM):
+class LiteLLMClient(LLM):
     def __init__(self, model: str) -> None:
         self.model = model
 
