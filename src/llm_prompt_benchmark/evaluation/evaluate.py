@@ -53,7 +53,7 @@ def evaluate(predictions: list[Prediction]) -> list[StrategyEvaluation]:
                 accuracy=confusion_matrix.accuracy(),
                 precision=confusion_matrix.precision(),
                 recall=confusion_matrix.recall(),
-                f_one=confusion_matrix.recall(),
+                f_one=confusion_matrix.f_one(),
                 valid_predictions=valid_predictions,
                 invalid_predictions=invalid_predictions,
                 format_compliance=format_compliance,
