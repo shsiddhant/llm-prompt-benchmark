@@ -14,11 +14,26 @@ class StrategyReport:
     average_input_tokens: float
     average_output_tokens: float
 
+    def to_dict(self) -> dict:
+        return {
+            "strategy": self.strategy.value,
+            "evaluation": self.evaluation.to_dict(),
+            "average_latency": self.average_latency,
+            "average_input_tokens": self.average_input_tokens,
+            "average_output_tokens": self.average_output_tokens,
+        }
+
 
 @dataclass(frozen=True)
 class BenchmarkReport:
     model: str
     reports: list[StrategyReport]
+
+    def to_dict(self) -> dict:
+        return {
+            "model": self.model,
+            "reports": [r.to_dict() for r in self.reports],
+        }
 
     @classmethod
     def generate(

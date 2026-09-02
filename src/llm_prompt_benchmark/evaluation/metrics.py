@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from typing import Self
 
 from .predict import Prediction
@@ -10,6 +10,9 @@ class ConfusionMatrix:
     false_positive: int
     false_negative: int
     true_negative: int
+
+    def to_dict(self) -> dict:
+        return asdict(self)
 
     def total(self) -> int:
         return (

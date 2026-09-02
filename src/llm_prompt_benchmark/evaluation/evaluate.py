@@ -17,6 +17,19 @@ class StrategyEvaluation:
     invalid_predictions: int
     format_compliance: float
 
+    def to_dict(self) -> dict:
+        return {
+            "strategy": self.strategy.value,
+            "confusion_matrix": self.confusion_matrix.to_dict(),
+            "accuracy": self.accuracy,
+            "precision": self.precision,
+            "recall": self.recall,
+            "f_one": self.f_one,
+            "valid_predictions": self.valid_predictions,
+            "invalid_predictions": self.invalid_predictions,
+            "format_compliance": self.format_compliance,
+        }
+
 
 def evaluate(predictions: list[Prediction]) -> list[StrategyEvaluation]:
     evaluation: list[StrategyEvaluation] = []

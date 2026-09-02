@@ -16,6 +16,13 @@ class Prediction:
     predicted: Sentiment | None
     expected: int
 
+    def to_dict(self) -> dict:
+        return {
+            "strategy": self.strategy.value,
+            "predicted": self.predicted,
+            "expected": self.expected,
+        }
+
 
 def parse_benchmark_result(result: BenchmarkResult) -> Prediction:
     text = result.response.text

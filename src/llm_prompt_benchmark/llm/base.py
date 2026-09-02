@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 
 
 @dataclass
@@ -10,6 +10,9 @@ class GeneratedResponse:
     reasoning_tokens: int | None
     latency: float
     finish_reason: str | None
+
+    def to_dict(self) -> dict:
+        return asdict(self)
 
 
 class LLM(ABC):

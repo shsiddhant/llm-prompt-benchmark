@@ -12,6 +12,13 @@ class BenchmarkResult:
     expected_label: int
     response: GeneratedResponse
 
+    def to_dict(self) -> dict:
+        return {
+            "strategy": self.strategy.value,
+            "expected_label": self.expected_label,
+            "response": self.response.to_dict(),
+        }
+
 
 def run_benchmark(dataset: Dataset, llm: LLM) -> list[BenchmarkResult]:
     results: list[BenchmarkResult] = []
