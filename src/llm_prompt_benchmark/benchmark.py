@@ -1,3 +1,4 @@
+from collections.abc import Callable
 from dataclasses import dataclass
 
 from datasets import Dataset
@@ -20,8 +21,18 @@ class BenchmarkResult:
         }
 
 
-def run_benchmark(dataset: Dataset, llm: LLM) -> list[BenchmarkResult]:
+@dataclass
+class BenchmarkProgress:
+    total: int
+    completed: int
+
+
+def run_benchmark(
+    dataset: Dataset, llm: LLM, callback: Callable[[BenchmarkProgress], None]
+) -> list[BenchmarkResult]:
     results: list[BenchmarkResult] = []
+    total = len(dataset) * len(PromptStrategy)
+    completed = 0
 
     for d in dataset:
         for strategy in PromptStrategy:
@@ -34,4 +45,6 @@ def run_benchmark(dataset: Dataset, llm: LLM) -> list[BenchmarkResult]:
                     response=response,
                 )
             )
+            completed += 1
+            callback(BenchmarkProgress(total=total, completed=completed))
     return results
